@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>You've Entered The Ruins</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="scrollingText"></div>
+    <div id="userInputContainer">
+        <input type="text" id="userInput" placeholder="Type your reply here" />
+        <button onclick="submitReply()">Submit</button>
+    </div>
+    
+    <textarea id="dataInput" rows="10" cols="30"></textarea><br><br>
+    <!--
+    <button onclick="saveToLocal()">Save to Local</button>
+    <button onclick="downloadRemote()">Download from Server</button>
+    <button onclick="loadFromFile()">Load from File</button>
+    <button onclick="loadFromServer()">Load from Server</button>
+    <button onclick="saveToRemote()">Save to Remote</button>
+    -->
+    
+    <button onclick="saveToLocal()">Save to File</button>
+    <button onclick="loadFromFile()">Load from File</button>
+    <!--<button onclick="downloadRemote()">Download from Server</button>-->
+    <button onclick="loadFromServer()">Load</button>
+    <button onclick="saveToRemote()">Save</button>
+    
+    <!-- Add a response element to display server responses -->
+    <div id="responseText"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
