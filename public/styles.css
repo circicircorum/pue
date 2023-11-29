@@ -51,12 +51,12 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 10px;
+    margin: 300px 0px 10px 0px;
     padding: 10px;
 }
 
 #gxbDataInput {
-    height: 300px;
+    height: 250px;
 }
 
 #gxbButtonsContainer {

@@ -93,7 +93,7 @@ else appendText("unas plauras o frases por favo xoxo");
 
 
 function saveToLocal() {
-    const data = document.getElementById('dataInput').value;
+    const data = document.getElementById('gxbDataInput').value;
     const blob = new Blob([data], { type: 'text/csv' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
@@ -126,7 +126,7 @@ function loadFromFile() {
         const reader = new FileReader();
 
         reader.onload = function() {
-            document.getElementById('dataInput').value = reader.result;
+            document.getElementById('gxbDataInput').value = reader.result;
         };
 
         reader.readAsText(file);
@@ -142,25 +142,25 @@ function loadFromServer() {
     fetch('/gxb_remote_data')
         .then(response => response.text())
         .then(data => {
-            document.getElementById('dataInput').value = data;
+            document.getElementById('gxbDataInput').value = data;
             const row = document.createElement('div');
             row.textContent = 'Data loaded';
-            document.getElementById('responseText').appendChild(row);
+            document.getElementById('gxbResponseText').appendChild(row);
         });
 }
 
 function saveToRemote() {
-    const data = document.getElementById('dataInput').value;
+    const data = document.getElementById('gxbDataInput').value;
     // Assuming you have a server-side endpoint for saving data remotely
     // You can use fetch or any other method to send data to the server
     // Example using fetch:
     fetch('/gxb_remote_data', {
         method: 'POST',
-/*
-headers: {
-    "Content-Type": "text/csv"
-},
-//*/
+        /*
+        headers: {
+            "Content-Type": "text/csv"
+        },
+        //*/
         body: data//'test-str-r'//data//JSON.stringify(data)
     })
     .then(response => response.text())
@@ -168,6 +168,6 @@ headers: {
         //document.getElementById('responseText').textContent += ' ' + result;
         const row = document.createElement('div');
         row.textContent = result;
-        document.getElementById('responseText').appendChild(row);
+        document.getElementById('gxbResponseText').appendChild(row);
     });
 }
