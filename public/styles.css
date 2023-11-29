@@ -1,14 +1,23 @@
 body {
     background-color: black;
     color: white;
-    font-size: 18px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+#ismo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 #scrollingText {
@@ -36,6 +45,20 @@ body {
     margin-right: 8px;
 }
 
-#dataInput {
-    margin-top: 50px;
+#gxb {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 10px;
+    padding: 10px;
+}
+
+#gxbDataInput {
+    height: 300px;
+}
+
+#gxbButtonsContainer {
+    margin: 15px 10px;
 }
