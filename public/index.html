@@ -7,41 +7,34 @@
 </head>
 
 <body>
-    <div id="fho-cjg-container">
+    <div id="qyh">
+        <div id="qav">
+            <p>Date/Entry ID/Title: </p>
+            <!--<input type="text">-->
+            <textarea></textarea>
+        </div>
         <div id="fho">
             <div id="otb">
-                <div id="otb-gwd">
+                <div id="otb-gwd"></div>
+            </div>
 
-                </div>
+            <div id="dbq">
+                <div id="dbq-gwd"></div>
             </div>
 
             <div id="gxb">
-                <div></div>
+                <p>Miscellaneous Remarks</p>
                 <textarea id="gxbDataInput" rows="10" cols="30"></textarea>
 
                 <div id="gxbButtonsContainer">
-                    <!--
-                <button onclick="saveToLocal()">Save to Local</button>
-                <button onclick="downloadRemote()">Download from Server</button>
-                <button onclick="loadFromFile()">Load from File</button>
-                <button onclick="loadFromServer()">Load from Server</button>
-                <button onclick="saveToRemote()">Save to Remote</button>
-                -->
                     <button onclick="saveToLocal()">Save to File</button>
                     <button onclick="loadFromFile()">Load from File</button>
-                    <!--<button onclick="downloadRemote()">Download from Server</button>-->
                     <button onclick="loadFromServer()">Load</button>
                     <button onclick="saveToRemote()">Save</button>
                 </div>
 
                 <!-- Add a response element to display server responses -->
-                <div id="gxbResponseText"></div>
-            </div>
-
-            <div id="dbq">
-                <div id="dbq-gwd">
-
-                </div>
+                <div id="gxbResponseText" aria-live="polite"></div>
             </div>
         </div>
 
@@ -51,16 +44,6 @@
             </div>
         </div>
     </div>
-
-    <!--
-    <div id="ismo">
-        <div id="scrollingText"></div>
-        <div id="userInputContainer">
-            <input type="text" id="userInput" placeholder="Type your reply here" />
-            <button onclick="submitReply()">Submit</button>
-        </div>
-    </div>
-    -->
 
     <script src="script.js"></script>
 </body>

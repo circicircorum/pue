@@ -1,99 +1,34 @@
-const scrollingTextElement = document.getElementById('scrollingText');
-const userInputElement = document.getElementById('userInput');
-/*
-// Function to append new text to the scrolling text box
-function appendText(text) {
-    const newMessage = document.createElement('p');
-    newMessage.textContent = text;
-    scrollingTextElement.appendChild(newMessage);
 
-    // Scroll to the bottom after adding a new message
-    scrollingTextElement.scrollTop = scrollingTextElement.scrollHeight;
-}
+/* Aii */
+function getAii() {
+    gxbText = "Miscellaneous Remarks: " + document.getElementById('gxbDataInput').value;
 
-// Function to handle user input when pressing Enter
-function handleUserInput(event) {
-    if (event.key === 'Enter') {
-        submitReply();
-    }
-}
+    otb = document.getElementById('otb');
+    otbRizList = Array.from(otb.getElementsByClassName('riz'));
+    dbq = document.getElementById('dbq');
+    dbqRizList = Array.from(dbq.getElementsByClassName('riz'));
 
-// Attach the event listener to the input field
-userInputElement.addEventListener('keyup', handleUserInput);
+    rizList = otbRizList.concat(dbqRizList);
 
-
-// ?Sheísmo o no?
-let sh = false;
-// Function to handle user input
-function submitReply() {
-    let reply = userInputElement.value;
-    userInputElement.value = ''; // Clear the input field
-    reply = reply.replace(/ll/gi, 'y');
-    reply = reply.replace(/gu/gi, 'w');
-    reply = reply.replace(/ju/gi, 'w')
-    reply = reply.replace(/qu/gi, 'k');
-    reply = reply.replace(/h/gi, '');
-    reply = reply.replace(/z/gi, 's');
-    reply = reply.replace(/g([eiéí])/gi, 'j$1');
-    reply = reply.replace(/([aeiouáéíóúü])c([eiéí])/gi, '$1s$2');
-    reply = reply.replace(/s\b/g, 'j'); // o h, tbh
-    reply = reply.replace(/([aeiouáéíóúü])d([aeiouáéíóúü])/gi, '$1$2');
-    reply = reply.replace(/([aeiouáéíóúü])s([tpck])/gi, '$1$2');
-    //reply = reply.replace(/(?<![aeiouáéíóúü])s(?![tpck])/gi, '$1$2');
-    
-    if (sh) {
-        reply = reply.replace(/y/g, 'sh');
+    rizzes = "";
+    for (i in rizList) {
+        rizQuestion = "Question: " + rizList[i].getElementsByTagName('p')[0].textContent;
+        rizAnswer = "Answer: " + rizList[i].getElementsByTagName('textarea')[0].value;
+        rizzes += rizQuestion + "\n" + rizAnswer + "\n";
     }
     
-    appendText(`${reply}`);
-    //appendText(`You: ${reply}`);
-    //appendText(`.`);
-    
-    // Generate and append a random numbers message
-    // const randomNumbersMessage = `And so I say ${generateRandomNumbersString(10)}`;
-    // appendText(randomNumbersMessage);
-    
-    //appendText(`You see some keyholes and keys:`);
-    //appendText(`<Q: What is ${generateRandomNumbersString(10)}?>`);
+    concatText = rizzes + gxbText;
+
+    return concatText;
 }
 
-// Function to generate a random string of numbers
-function generateRandomNumbersString(length) {
-    let result = '';
-    const characters = '0123456789';
-    const charactersLength = characters.length;
-    for (let i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
+function setAii(aiiInput) {
+    document.getElementById('gxbDataInput').value = aiiInput;
 }
 
-// Function to handle scrolling and hide old messages
-scrollingTextElement.addEventListener('scroll', function() {
-    const allMessages = scrollingTextElement.querySelectorAll('p');
-    const scrollingTextRect = scrollingTextElement.getBoundingClientRect();
-    allMessages.forEach((message) => {
-        const messageRect = message.getBoundingClientRect();
-        if (messageRect.bottom < scrollingTextRect.top || messageRect.top > scrollingTextRect.bottom) {
-            message.style.visibility = 'hidden';
-        } else {
-            message.style.visibility = 'visible';
-        }
-    });
-});
-
-// Execute the initial scroll event to hide messages initially
-scrollingTextElement.dispatchEvent(new Event('scroll'));
-
-if (sh) appendText("Sheísmo: una palabra por favor xoxo");
-else appendText("unas plauras o frases por favo xoxo");
-//appendText("You've just entered some ancient ruins.");
-//appendText(`<Q: What is ${generateRandomNumbersString(10)}?>`);
-*/
-
-
+/* Gxb */
 function saveToLocal() {
-    const data = document.getElementById('gxbDataInput').value;
+    const data = getAii();
     const blob = new Blob([data], { type: 'text/csv' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
@@ -126,7 +61,8 @@ function loadFromFile() {
         const reader = new FileReader();
 
         reader.onload = function() {
-            document.getElementById('gxbDataInput').value = reader.result;
+            //document.getElementById('gxbDataInput').value = reader.result;
+            setAii(reader.result);
         };
 
         reader.readAsText(file);
@@ -142,7 +78,7 @@ function loadFromServer() {
     fetch('/gxb_remote_data')
         .then(response => response.text())
         .then(data => {
-            document.getElementById('gxbDataInput').value = data;
+            setAii(data);
             const row = document.createElement('div');
             row.textContent = 'Data loaded';
             document.getElementById('gxbResponseText').appendChild(row);
@@ -150,7 +86,9 @@ function loadFromServer() {
 }
 
 function saveToRemote() {
-    const data = document.getElementById('gxbDataInput').value;
+    /*const data = document.getElementById('gxbDataInput').value;*/
+    const data = getAii();
+
     // Assuming you have a server-side endpoint for saving data remotely
     // You can use fetch or any other method to send data to the server
     // Example using fetch:
@@ -172,6 +110,8 @@ function saveToRemote() {
     });
 }
 
+
+/* Otb and Dbq */
 // otbGwd = document.getElementById('otb-gwd');
 // otbGwd.addEventListener("load", otber);
 // otber();
@@ -188,6 +128,7 @@ function otber() {
                 "When did you sleep?"];
     for (promptIndex in prompts) {
         promptQuestionAndAnswerDiv = document.createElement('div');
+        promptQuestionAndAnswerDiv.className += "riz";
         promptQuestion = document.createElement('p');
         promptQuestion.textContent = prompts[promptIndex];
         promptAnswer = document.createElement('textarea');
@@ -204,6 +145,7 @@ function dbqer() {
                 "Any remarks?"];
     for (promptIndex in prompts) {
         promptQuestionAndAnswerDiv = document.createElement('div');
+        promptQuestionAndAnswerDiv.className += "riz";
         promptQuestion = document.createElement('p');
         promptQuestion.textContent = prompts[promptIndex];
         promptAnswer = document.createElement('textarea');

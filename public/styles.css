@@ -5,44 +5,17 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     margin: 0;
     font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#ismo {
+#fho {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-#scrollingText {
-    max-width: 500px;
-    overflow-y: scroll;
-    text-align: center;
-    height: 60vh;
-    padding-bottom: 3vh;
-}
-
-#scrollingText p {
-    margin: 8px;
-    opacity: 1;
-    transition: opacity 1s;
-}
-
-#userInputContainer {
-    padding-top: 7vh;
-    display: flex;
-    align-items: center;
-}
-
-#userInput {
-    flex: 1;
-    margin-right: 8px;
+    flex-wrap: wrap;
 }
 
 #gxb {
@@ -50,7 +23,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     padding: 10px;
 }
 
@@ -67,7 +39,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     padding: 10px;
 }
 
@@ -76,17 +47,32 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     padding: 10px;
+    order: 3;
 }
 
-#fho {
+@media (max-width:740px) {
+    #dbq {
+        order: 0;
+    }
+}
+
+#qyh {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#qav {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    /*height: 100vh;
-    margin: 300px 0px 10px 0px;*/
     padding: 10px;
-    width: 100%;
+}
+
+#qav textarea {
+    height: 20px;
+    margin: 10px;
 }
