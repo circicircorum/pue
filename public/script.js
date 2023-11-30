@@ -1,6 +1,6 @@
 const scrollingTextElement = document.getElementById('scrollingText');
 const userInputElement = document.getElementById('userInput');
-
+/*
 // Function to append new text to the scrolling text box
 function appendText(text) {
     const newMessage = document.createElement('p');
@@ -89,7 +89,7 @@ if (sh) appendText("Sheísmo: una palabra por favor xoxo");
 else appendText("unas plauras o frases por favo xoxo");
 //appendText("You've just entered some ancient ruins.");
 //appendText(`<Q: What is ${generateRandomNumbersString(10)}?>`);
-
+*/
 
 
 function saveToLocal() {
@@ -170,4 +170,45 @@ function saveToRemote() {
         row.textContent = result;
         document.getElementById('gxbResponseText').appendChild(row);
     });
+}
+
+// otbGwd = document.getElementById('otb-gwd');
+// otbGwd.addEventListener("load", otber);
+// otber();
+
+// body = document.getElementsByTagName("body");
+window.onload = function() {
+    otber();
+    dbqer();
+};
+
+function otber() {
+    prompts = ["What did you do today?",
+                "How did you feel?",
+                "When did you sleep?"];
+    for (promptIndex in prompts) {
+        promptQuestionAndAnswerDiv = document.createElement('div');
+        promptQuestion = document.createElement('p');
+        promptQuestion.textContent = prompts[promptIndex];
+        promptAnswer = document.createElement('textarea');
+        promptQuestionAndAnswerDiv.appendChild(promptQuestion);
+        promptQuestionAndAnswerDiv.appendChild(promptAnswer);
+        document.getElementById('otb-gwd').appendChild(promptQuestionAndAnswerDiv);
+    }
+}
+
+//dbqer();
+function dbqer() {
+    prompts = ["How was the weather?",
+                "What did you learn?",
+                "Any remarks?"];
+    for (promptIndex in prompts) {
+        promptQuestionAndAnswerDiv = document.createElement('div');
+        promptQuestion = document.createElement('p');
+        promptQuestion.textContent = prompts[promptIndex];
+        promptAnswer = document.createElement('textarea');
+        promptQuestionAndAnswerDiv.appendChild(promptQuestion);
+        promptQuestionAndAnswerDiv.appendChild(promptAnswer);
+        document.getElementById('dbq-gwd').appendChild(promptQuestionAndAnswerDiv);
+    }
 }

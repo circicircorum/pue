@@ -1,3 +1,6 @@
+#misc files
+public/gxb/remote_data.csv
+
 # Logs
 logs
 *.log
