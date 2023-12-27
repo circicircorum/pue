@@ -1,10 +1,9 @@
 
 /* Aii */
 function getAii() {
-    gxbText = "Miscellaneous Remarks: " + document.getElementById('gxbDataInput').value;
 
     qav = document.getElementById('qav');
-    title = "Title: " + qav.getElementsByTagName('textarea')[0].value + "\n";
+    title = "Title: " + qav.getElementsByTagName('textarea')[0].value + "\n\n\n";
 
     otb = document.getElementById('otb');
     otbRizList = Array.from(otb.getElementsByClassName('riz'));
@@ -17,8 +16,10 @@ function getAii() {
     for (i in rizList) {
         rizQuestion = "Question: " + rizList[i].getElementsByTagName('p')[0].textContent;
         rizAnswer = "Answer: " + rizList[i].getElementsByTagName('textarea')[0].value;
-        rizzes += rizQuestion + "\n" + rizAnswer + "\n";
+        rizzes += rizQuestion + "\n" + rizAnswer + "\n\n";
     }
+
+    gxbText = "\nMiscellaneous Remarks: " + document.getElementById('gxbDataInput').value + "\n";
 
     concatText = title + rizzes + gxbText;
 
